@@ -1,0 +1,72 @@
+CREATE TABLE Partner
+(
+ID int,
+PartnerName varchar(255)
+);
+CREATE TABLE Vehicle
+(
+ID int,
+Size int,
+Type char
+);
+CREATE TABLE Item
+(
+ID int,
+Item_weight int,
+Item_height int,
+Item_length int,
+Item_breadth int,
+Fragile bool
+);
+CREATE TABLE Hub
+(
+Hub_ID char,
+State varchar(10),
+City varchar(10)
+);
+CREATE TABLE Company
+(
+CompID int,
+CompName varchar(10)
+);    
+CREATE TABLE Vehicle_Instance
+(
+ID int,
+VehicleID int,
+SourceHUB char,
+DestinationHUB char,
+CurrentHub char,
+PartnerID int
+);    
+CREATE TABLE Order_1
+(
+ID int,
+SourceHUB char,
+DestinationHUB char,
+CompID int,
+OrderDate Date,
+Price double
+);    
+CREATE TABLE Order_Item
+(
+ID int,
+OrderID int,
+itemID int,
+price double
+);    
+CREATE TABLE Order_Track
+(
+ID int,
+OrderID int,
+HubID int,
+VehicleID int,
+Status int
+);    
+CREATE TABLE Payment
+(
+ID int,
+OrderID int,
+BankDetail varchar(20),
+compID int,
+amountPaid double
+);    
