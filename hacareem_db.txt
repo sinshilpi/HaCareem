@@ -6,10 +6,9 @@ PRIMARY KEY(id)
 );
 CREATE TABLE Vehicle
 (
-id INT NOT NULL AUTO_INCREMENT,
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 size int,
-type Varchar(20),
-PRIMARY KEY(id)
+type Varchar(20)
 );
 CREATE TABLE Item
 (
