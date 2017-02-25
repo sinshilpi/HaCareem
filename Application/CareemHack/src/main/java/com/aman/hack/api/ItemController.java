@@ -1,6 +1,5 @@
 package com.aman.hack.api;
 
-import java.math.BigInteger;
 import com.aman.hack.model.Item;
 import com.aman.hack.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by aman.singhal on 2/25/17.
- */
 @RestController
 public class ItemController {
 

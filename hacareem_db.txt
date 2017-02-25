@@ -1,72 +1,108 @@
 CREATE TABLE Partner
 (
-ID int,
-PartnerName varchar(255)
+id INT NOT NULL AUTO_INCREMENT,
+partner_name varchar(50),
+PRIMARY KEY(id)
 );
 CREATE TABLE Vehicle
 (
-ID int,
-Size int,
-Type char
+id INT NOT NULL AUTO_INCREMENT,
+size int,
+type Varchar(20),
+PRIMARY KEY(id)
 );
 CREATE TABLE Item
 (
-ID int,
-Item_weight int,
-Item_height int,
-Item_length int,
-Item_breadth int,
-Fragile bool
+id INT NOT NULL AUTO_INCREMENT,
+item_name varchar(50),
+item_weight int,
+item_height int,
+item_length int,
+item_breadth int,
+fragile bool,
+PRIMARY KEY(id)
 );
 CREATE TABLE Hub
 (
-Hub_ID char,
-State varchar(10),
-City varchar(10)
+id INT NOT NULL AUTO_INCREMENT,
+state varchar(10),
+city varchar(10),
+PRIMARY KEY(id)
 );
 CREATE TABLE Company
 (
-CompID int,
-CompName varchar(10)
+id INT NOT NULL AUTO_INCREMENT,
+comp_name varchar(10),
+PRIMARY KEY(id)
 );    
 CREATE TABLE Vehicle_Instance
 (
-ID int,
-VehicleID int,
-SourceHUB char,
-DestinationHUB char,
-CurrentHub char,
-PartnerID int
+id INT NOT NULL AUTO_INCREMENT,
+vehicle_id int,
+source_hub_id int,
+destination_hub_id int,
+current_hub int,
+partner_id int,
+PRIMARY KEY(id)
 );    
-CREATE TABLE Order_1
+CREATE TABLE Order_table
 (
-ID int,
-SourceHUB char,
-DestinationHUB char,
-CompID int,
-OrderDate Date,
-Price double
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+source_hub_id int,
+destination_hub_id int,
+comp_id int,
+order_date Date,
+price double,
+FOREIGN KEY fk_source_hub(source_hub_id)
+   REFERENCES Hub(id)
+   ON UPDATE CASCADE
+   ON DELETE RESTRICT,
+FOREIGN KEY fk_dest_hub(destination_hub_id)
+   REFERENCES Hub(id)
+   ON UPDATE CASCADE
+   ON DELETE RESTRICT,
+FOREIGN KEY fk_comp(comp_id)
+   REFERENCES Company(id)
+   ON UPDATE CASCADE
+   ON DELETE RESTRICT
 );    
-CREATE TABLE Order_Item
+CREATE TABLE Order_item
 (
-ID int,
-OrderID int,
-itemID int,
-price double
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+order_id int,
+item_id int,
+price double,
+FOREIGN KEY fk_order(order_id)
+   REFERENCES Order_table(id)
+   ON UPDATE CASCADE
+   ON DELETE RESTRICT,
+FOREIGN KEY fk_item(item_id)
+   REFERENCES Item(id)
+   ON UPDATE CASCADE
+   ON DELETE RESTRICT
 );    
 CREATE TABLE Order_Track
 (
-ID int,
-OrderID int,
-HubID int,
-VehicleID int,
-Status int
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+order_id int,
+hub_id int,
+vehicle_id int,
+status int,
+FOREIGN KEY fk_order(order_id)
+   REFERENCES Order_table(id)
+   ON UPDATE CASCADE
+   ON DELETE RESTRICT,
+FOREIGN KEY fk_hub(hub_id)
+   REFERENCES Hub(id)
+   ON UPDATE CASCADE
+   ON DELETE RESTRICT
 );    
 CREATE TABLE Payment
 (
-ID int,
-OrderID int,
-BankDetail varchar(20),
-compID int,
-amountPaid double
+id INT NOT NULL AUTO_INCREMENT,
+order_id int,
+bank_details varchar(20),
+company_id int,
+amount_paid double,
+PRIMARY KEY(id)
 );    
