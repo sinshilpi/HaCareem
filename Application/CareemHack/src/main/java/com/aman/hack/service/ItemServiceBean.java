@@ -5,9 +5,6 @@ import com.aman.hack.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by aman.singhal on 2/25/17.
- */
 @Service
 public class ItemServiceBean implements ItemService {
 
