@@ -2,7 +2,11 @@ package com.aman.hack.model;
 
 import javax.persistence.*;
 
-import java.util.Date;
+import java.util.*;
+import org.hibernate.SQLQuery;
+import org.hibernate.Criteria;
+import org.hibernate.Criteria.*;
+
 
 @Entity
 @Table(name = "Order_table")
@@ -22,6 +26,7 @@ public class OrderTable {
     private Company compId;
     private Date orderDate;
     private double price;
+
 
     public OrderTable(){
     }
