@@ -8,7 +8,7 @@ CREATE TABLE Vehicle
 (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 size int,
-type Varchar(20)
+type Varchar(50)
 );
 CREATE TABLE Item
 (
@@ -24,14 +24,14 @@ PRIMARY KEY(id)
 CREATE TABLE Hub
 (
 id INT NOT NULL AUTO_INCREMENT,
-state varchar(10),
-city varchar(10),
+state varchar(50),
+city varchar(50),
 PRIMARY KEY(id)
 );
 CREATE TABLE Company
 (
 id INT NOT NULL AUTO_INCREMENT,
-comp_name varchar(10),
+comp_name varchar(50),
 PRIMARY KEY(id)
 );     
 CREATE TABLE Order_table
@@ -90,7 +90,7 @@ CREATE TABLE Payment
 (
 id INT NOT NULL AUTO_INCREMENT,
 order_id int,
-bank_details varchar(20),
+bank_details varchar(50),
 company_id int,
 amount_paid double,
 PRIMARY KEY(id)
