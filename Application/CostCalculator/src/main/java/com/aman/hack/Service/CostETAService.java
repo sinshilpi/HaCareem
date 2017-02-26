@@ -7,5 +7,5 @@ import com.aman.hack.model.CostETA;
  */
 public interface CostETAService {
 
-    CostETA findCostETA(long length, long breadth, long height, long distance);
+    CostETA findCostETA(long length, long breadth, long height, long distance, long weight);
 }

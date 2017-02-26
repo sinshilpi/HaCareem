@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CostETAController {
     @Autowired
     private CostETAServiceBean costServiceBean;
-    @RequestMapping(value = "/api/findCostETA", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/findcost", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CostETA> getItem(@RequestParam("length") long length, @RequestParam("breadth") long breadth,
-            @RequestParam("height") long height, @RequestParam("distance") long distance) {
-        CostETA cost = costServiceBean.findCostETA(length, breadth, height, distance);
+            @RequestParam("height") long height, @RequestParam("distance") long distance,
+            @RequestParam("weight")long weight) {
+        CostETA cost = costServiceBean.findCostETA(length, breadth, height, distance, weight);
         return new ResponseEntity<CostETA>(cost, HttpStatus.OK);
     }
 }
