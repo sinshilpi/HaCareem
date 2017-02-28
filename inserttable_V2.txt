@@ -1,0 +1,36 @@
+INSERT INTO partner (partner_Name) VALUES ('DHL');
+INSERT INTO partner (partner_Name) VALUES ('FEDEX');
+INSERT INTO partner (partner_Name) VALUES ('BLUEDART');
+
+INSERT INTO vehicle (size,type) VALUES (500,'MEDIUM');
+INSERT INTO vehicle (size,type) VALUES (300,'SMALL');
+INSERT INTO vehicle (size,type) VALUES (1000,'LARGE');
+
+INSERT INTO item (item_name,item_weight,item_height,item_length,item_breadth,fragile) VALUES ('SHIRT-LEVIS',10,10,20,30,false);
+INSERT INTO item (item_name,item_weight,item_height,item_length,item_breadth,fragile) VALUES ('SHOES-NIKE',20,30,40,50,false);
+INSERT INTO item (item_name,item_weight,item_height,item_length,item_breadth,fragile) VALUES ('JEANS',20,30,40,50,false);
+
+INSERT INTO hub (state, city) VALUES ('KARNATAKA','BANGALORE');
+INSERT INTO hub (state, city) VALUES ('KERALA','COCHIN');
+INSERT INTO hub (state, city) VALUES ('MAHARASHTRA','MUMBAI');
+
+INSERT INTO company (comp_name) VALUES ('FLIPKART');
+INSERT INTO company (comp_name) VALUES ('AMAZON');
+INSERT INTO company (comp_name) VALUES ('SNAPDEAL');
+
+INSERT INTO vehicle_instance (vehicle_id,source_hub_id,destination_hub_id,current_hub,partner_id) VALUES (1,1,2,3,0);
+INSERT INTO vehicle_instance (vehicle_id,source_hub_id,destination_hub_id,current_hub,partner_id) VALUES (2,2,1,3,0);
+INSERT INTO vehicle_instance (vehicle_id,source_hub_id,destination_hub_id,current_hub,partner_id) VALUES (3,3,1,2,1);
+
+INSERT INTO order_table (source_hub_id,destination_hub_id,comp_id,order_date,price) VALUES (1,2,1,null,100);
+INSERT INTO order_table (source_hub_id,destination_hub_id,comp_id,order_date,price) VALUES (2,3,1,null,500);
+
+INSERT INTO order_item (order_id,item_id,price) VALUES (1,2,100);
+INSERT INTO order_item (order_id,item_id,price) VALUES (2,3,300);
+INSERT INTO order_item (order_id,item_id,price) VALUES (1,2,500);
+
+INSERT INTO order_track	(order_id,hub_id,vehicle_id,status) VALUES (1,1,500,3);
+INSERT INTO order_track	(order_id,hub_id,vehicle_id,status) VALUES (2,1,900,1);
+
+INSERT INTO payment	(order_id,bank_details,company_id,amount_paid) VALUES (1,'HDFC BANK',4,3000.00);
+INSERT INTO payment	(order_id,bank_details,company_id,amount_paid) VALUES (2,'ICICI BANK',4,3000.00);

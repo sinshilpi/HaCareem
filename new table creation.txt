@@ -1,16 +1,16 @@
-CREATE TABLE Partner
+CREATE TABLE partner
 (
 id INT NOT NULL AUTO_INCREMENT,
 partner_name varchar(50),
 PRIMARY KEY(id)
 );
-CREATE TABLE Vehicle
+CREATE TABLE vehicle
 (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 size int,
 type Varchar(50)
 );
-CREATE TABLE Item
+CREATE TABLE item
 (
 id INT NOT NULL AUTO_INCREMENT,
 item_name varchar(50),
@@ -21,20 +21,30 @@ item_breadth int,
 fragile bool,
 PRIMARY KEY(id)
 );
-CREATE TABLE Hub
+CREATE TABLE hub
 (
 id INT NOT NULL AUTO_INCREMENT,
 state varchar(50),
 city varchar(50),
 PRIMARY KEY(id)
 );
-CREATE TABLE Company
+CREATE TABLE company
 (
 id INT NOT NULL AUTO_INCREMENT,
 comp_name varchar(50),
 PRIMARY KEY(id)
 );     
-CREATE TABLE Order_table
+CREATE TABLE vehicle_instance
+(
+id INT NOT NULL AUTO_INCREMENT,
+vehicle_id int,
+source_hub_id int,
+destination_hub_id int,
+current_hub int,
+partner_id int,
+PRIMARY KEY(id)
+);    
+CREATE TABLE order_table
 (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 source_hub_id int,
@@ -43,34 +53,34 @@ comp_id int,
 order_date Date,
 price double,
 FOREIGN KEY fk_source_hub(source_hub_id)
-   REFERENCES Hub(id)
+   REFERENCES hub(id)
    ON UPDATE CASCADE
    ON DELETE RESTRICT,
 FOREIGN KEY fk_dest_hub(destination_hub_id)
-   REFERENCES Hub(id)
+   REFERENCES hub(id)
    ON UPDATE CASCADE
    ON DELETE RESTRICT,
 FOREIGN KEY fk_comp(comp_id)
-   REFERENCES Company(id)
+   REFERENCES company(id)
    ON UPDATE CASCADE
    ON DELETE RESTRICT
 );    
-CREATE TABLE Order_item
+CREATE TABLE order_item
 (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 order_id int,
 item_id int,
 price double,
 FOREIGN KEY fk_order(order_id)
-   REFERENCES Order_table(id)
+   REFERENCES order_table(id)
    ON UPDATE CASCADE
    ON DELETE RESTRICT,
 FOREIGN KEY fk_item(item_id)
-   REFERENCES Item(id)
+   REFERENCES item(id)
    ON UPDATE CASCADE
    ON DELETE RESTRICT
 );    
-CREATE TABLE Order_Track
+CREATE TABLE order_track
 (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 order_id int,
@@ -78,15 +88,15 @@ hub_id int,
 vehicle_id int,
 status int,
 FOREIGN KEY fk_order(order_id)
-   REFERENCES Order_table(id)
+   REFERENCES order_table(id)
    ON UPDATE CASCADE
    ON DELETE RESTRICT,
 FOREIGN KEY fk_hub(hub_id)
-   REFERENCES Hub(id)
+   REFERENCES hub(id)
    ON UPDATE CASCADE
    ON DELETE RESTRICT
 );    
-CREATE TABLE Payment
+CREATE TABLE payment
 (
 id INT NOT NULL AUTO_INCREMENT,
 order_id int,
