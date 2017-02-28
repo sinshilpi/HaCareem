@@ -1,0 +1,12 @@
+docker run --name frontEnd5 -v /Users/aman.singhal/amanLearn/hackathon/HaCareem/Application/CareemHack/:/Users/aman.singhal/amanLearn/hackathon/HaCareem/Application/CareemHack/ -p 8080:8080 -d java java -jar /Users/aman.singhal/amanLearn/hackathon/HaCareem/Application/CareemHack/target/CareemHack-1.0-SNAPSHOT.jar
+
+docker run --name mysql2 -e MYSQL_ROOT_PASSWORD=test" -d mysql
+
+create table item (id INT NOT NULL AUTO_INCREMENT, item_name varchar(50), PRIMARY KEY (id));
+
+mysql -u root -p
+
+docker run --name costEta2 -v /Users/aman.singhal/Desktop:/Users/aman.singhal/Desktop -p 8081:8080 -d java java -jar /Users/aman.singhal/Desktop/Costcalculate-1.0-SNAPSHOT.jar
+
+
+http://localhost:8080/api/findcost?length=10&breadth=15&height=20&distance=25
